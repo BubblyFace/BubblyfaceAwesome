@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Test</title>
+    <style type="text/css">
+        .btn {
+            background-color: #0A246A;
+            color: white;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script src="./vue.js"></script>
+<script>
+    module = {}
+</script>
+<script src="./egovanative.js"></script>
+<script>
+    window.isIOS = Vue.util.isIOS;
+    window.isAndroid = Vue.util.isAndroid;
+
+    var native = module.exports
+
+    function print(result) {
+        alert(result.toString())
+    }
+    new Vue({
+        data: function () {
+            return {
+                nativeMethods: [
+                    'close',
+                    'loadFinish',
+                    'getJuniorHumanList',
+                    'getHuman',
+                    'startContactChooseActivity',
+                    'startSingleChat',
+                    'bindNavBar',
+                    'sendBroadcast',
+                    'sendMsg',
+                    'log',
+                    'goContactDetail',
+                    'selectTime']
+            }
+        },
+        methods: {
+            action: function (meth) {
+                if (meth == 'close') {
+                    native.close();
+                } else if (meth == 'getJuniorHumanList') {
+                    native.getJuniorHumanList(86, function (result) {
+                        print(result)
+                    })
+                } else if (meth == 'getHuman') {
+                    native.getHuman(86, function (result) {
+                        print(result)
+                    })
+                } else if (meth == 'startContactChooseActivity') {
+                    window.tempAndroidCallback = function (result) {
+                        print(result)
+                    }
+                    native.startContactChooseActivity({
+                        iosCallback: function (result) {
+                            print(result)
+                        },
+                        androidCallbackMethod: 'tempAndroidCallback'
+                    })
+                } else if (meth == 'startSingleChat') {
+                    native.startSingleChat(86)
+                } else if (meth == 'bindNavBar') {
+                    native.bindNavBar('标题', '菜单', function () {
+                        alert('点击菜单')
+                    })
+                } else if (meth == 'sendBroadcast') {
+                    alert('忽略')
+                } else if (meth == 'sendMsg') {
+                    native.sendMsg(86, '123456')
+                } else if (meth == 'log') {
+                    native.log('打印log日志')
+                } else if (meth == 'goContactDetail') {
+                    native.goContactDetail(86)
+                } else if (meth == 'selectTime') {
+                    window.tempAndroidCallback = function (hour, minute) {
+                        print("hour = " + hour + "; minute = " + minute)
+                    }
+                    native.selectTime('tempAndroidCallback', 3, 12)
+                }
+            }
+        },
+        template: '<div><div class="btn" v-for="meth in nativeMethods" @click="action(meth)">{{meth}}</div></div>'
+    }).$mount('#app');
+
+    setTimeout(function () {
+        alert('finish')
+        native.loadFinish()
+    }, 10000)
+</script>
+</html>

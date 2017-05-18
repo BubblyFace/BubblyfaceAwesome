@@ -1,0 +1,236 @@
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+
+/*width 包含 padding*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.mint-content {
+    background-color: #EEEFF3;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.mint-header {
+    background-color: #37aeff;
+    height:50px;
+}
+
+.mint-header .mint-header-button .mint-button {
+    font-size: 16px;
+}
+
+/*返回按钮，字体稍微大些*/
+.mint-header-button:first-child .mint-button {
+    font-size: 20px;
+}
+
+.mint-header-title {
+    font-size: 18px;
+}
+
+.mint-header-button.is-right button {
+    padding: 0 10px;
+}
+
+.header-menu-icon {
+    font-size: 25px;
+    padding: 10px;
+}
+
+.ic-gray {
+    color: #888;
+}
+
+.mint-button--default {
+    background-color: #37aeff;
+}
+
+.mint-button-text {
+    color: white;
+}
+
+.mint-cell-title {
+    white-space: pre;
+}
+
+.mint-cell-arrow-text {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.mint-cell-arrow-text.mint-cell-allow-right {
+    padding-right: 10px;
+}
+
+.mint-cell-allow-right:after {
+    right: 10px;
+    width: 8px;
+    height: 8px;
+}
+
+.moreLargeFont {
+    font-size: 22px;
+}
+
+.largeFont {
+    font-size: 18px;
+}
+
+.middleFont {
+    font-size: 15px;
+}
+
+.smallFont {
+    font-size: 12px;
+}
+
+.scrollable {
+    overflow:scroll;
+    -webkit-overflow-scrolling:touch;
+}
+
+.soft-scrollable {
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.gap {
+    margin-top: 10px;
+}
+
+.mint-cell-value input {
+    width: 100%;
+    text-align: right;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+textarea.default {
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    padding: 10px 10px 10px 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.mint-tab-item-label {
+    font-size: 15px;
+}
+
+.mint-navbar.is-fixed {
+    border-bottom: solid 1px #ccc;
+    /*top: 50px;*/
+    top: 0;
+}
+
+.mint-navbar .mint-tab-item.is-selected {
+    margin-bottom: 0px;
+}
+
+.bottomLine {
+    border-bottom: solid #dfdfdf 1px;
+}
+
+.sectionEmpty {
+    padding: 20px 0px;
+    text-align: center;
+    color: #aaa;
+    background-color: white;
+}
+
+.bdr-t, .bdr-r, .bdr-b, .bdr-l {
+    position: relative;
+}
+
+.bdr-t::before {
+    height: 1px;
+    content: '';
+    width: 100%;
+    border-bottom: 1px solid #dfdfdf;
+    position: absolute;
+    top: -1px;
+    right: 0;
+    z-index: 10
+}
+
+.bdr-b::after {
+    height: 1px;
+    content: '';
+    width: 100%;
+    border-bottom: 1px solid #dfdfdf;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    z-index: 10
+}
+
+
+.bdr-l::before {
+    height: 100%;
+    content: '';
+    width: 1px;
+    left: -1px;
+    border-right: 1px solid #dfdfdf;
+    position: absolute;
+    top: 0;
+    z-index: 10
+}
+
+
+.bdr-r::after {
+    height: 100%;
+    content: '';
+    width: 1px;
+    right: -1px;
+    border-right: 1px solid #dfdfdf;
+    position: absolute;
+    top: 0;
+    z-index: 10
+}
+
+.fixed {
+    position: fixed;
+}
+
+.justifyContent {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+/*=========界面动画===========*/
+.fade-enter-active {
+    opacity: 1;
+    transition: all .5s ease;
+}
+
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-leave-active {
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+.fade-enter, .fade-enter-active, .fade-leave-active {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

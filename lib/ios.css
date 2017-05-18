@@ -1,0 +1,12 @@
+.mint-header {
+    height:64px;
+    padding-top: 20px;
+}
+
+.mint-content {
+    top: 64px;
+}
+
+.mint-navbar.is-fixed {
+    top: 64px;
+}

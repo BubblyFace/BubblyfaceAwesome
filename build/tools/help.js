@@ -1,0 +1,6 @@
+console.log("=====================使用说明=====================")
+console.log("打包主模块：npm run main")
+console.log("开发模式打包插件kq：npm run dev -- --env.module kq")
+console.log("发布模式打包插件kq：npm run prod -- --env.module kq")
+console.log("hot reload模式打包插件kq：npm start -- --env.module kq")
+console.log("=================================================")
