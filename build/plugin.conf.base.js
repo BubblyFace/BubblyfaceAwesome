@@ -30,11 +30,11 @@ module.exports = function (env) {
                 manifest: require('../dist/modules-manifest.json'),
                 name: 'modules',
             }),
-            new HtmlWebpackPlugin({
-                chunks: ['app'],
-                inject: 'body',
-                template: path.join(urls.moduleSrcPath, 'index.html')
-            })
+            // new HtmlWebpackPlugin({
+            //     chunks: ['app'],
+            //     inject: 'body',
+            //     template: path.join(urls.moduleSrcPath, 'index.html')
+            // })
         ]
     })
 }

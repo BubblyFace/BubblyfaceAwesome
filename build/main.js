@@ -11,7 +11,6 @@ const webpackConf = merge(webpackConfBase, {
     entry: {
         modules: [
             'element-ui/lib/theme-default/index.css',
-            './lib/font-awesome.min.css',
             'vue',
             'element-ui',
             'vue-resource',

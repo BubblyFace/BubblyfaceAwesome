@@ -1,6 +1,6 @@
 const Vue = require('vue');
 const VueRouter = require('vue-router');
-const def = require('../../lib/default');
+const def = require('./javascripts/default');
 def.setUp();
 
 const login = require('./view/login.vue')
