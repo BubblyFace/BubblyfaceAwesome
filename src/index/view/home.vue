@@ -2,10 +2,23 @@
     <div>
         <div class="common-container">
             <header class="index-header">
-                <div id="bgIndex" :class="{ blur: showIntroduce }" >
+                <div id="bgIndex" :class="{ blur: showIntroduce }">
                     <img src="../../public/images/bg_2.jpg">
                 </div>
-                <div id="blog-logo" @click="goHome">B</div>
+                <div id="blog-logo" @click="getArticles">B</div>
+                <div class="menu">
+                    <el-button type="primary" class="menu-button" @click="showMenuFn"><i class="menu-icon" aria-hidden="true">
+                                </i>MENU
+                    </el-button>
+                    <div class="common-menu-container">
+                        <el-menu theme="dark">
+                            <el-menu-item index="1">Article List</el-menu-item>
+                            <el-menu-item index="2">Some Photos</el-menu-item>
+                            <el-menu-item index="3">About Author</el-menu-item>
+                            <el-menu-item index="4">Things Said By an Erbi</el-menu-item>
+                        </el-menu>
+                    </div>
+                </div>
                 <div class="common-vertical">
                     <div class="page-title" @click="showIntroduce=!showIntroduce" v-show="!showIntroduce">
                         BubblyFace Awesome
@@ -13,91 +26,82 @@
                 </div>
                 <div id="homeIntroduce" v-if="showIntroduce">
                     <el-row>
-                        <el-col :span="24"><div class="titleComntainer" @click="showIntroduce=!showIntroduce">
-                            <h1 class="common-title">Welcome</h1>
-                        </div></el-col>
+                        <el-col :span="24">
+                            <div class="titleComntainer" @click="showIntroduce=!showIntroduce">
+                                <h1 class="common-title">Welcome</h1>
+                            </div>
+                        </el-col>
                     </el-row>
                 </div>
-                <a class="showContent"  href="javascript:void(0)" @click="goAnchor('#content')">
+                <a class="showContent" href="javascript:void(0)" @click="goAnchor('#content')">
                     <i class="el-icon-arrow-down"></i>
                 </a>
             </header>
             <main id="content" class="content" name="content">
-                <article class="common-article" v-for="(article, index) in articles">
+                <article class="common-article" v-for="(article, index) in articles" @click="goArticleDetail(article.id)">
                     <common-article v-bind:articleData="article"></common-article>
                 </article>
             </main>
         </div>
     </div>
 </template>
+
 <style scoped>
-    #bgIndex{
+    .menu-icon {
+        background: url("../../public/icons/all.svg");
+    }
+    
+    #bgIndex {
         min-width: 1200px;
-        height: 100vh;
         width: 100%;
+        height:100vh;
         overflow-y: hidden;
-        background-color: #8f8f8f;
+        background-color: #fff;
         position: relative;
         transition: filter 1s;
     }
-    #bgIndex>img{
+    
+    #bgIndex>img {
         width: 100%;
     }
-    #blog-logo{
-        background-color: rgba(0,0,0,0.7);
-        color: #999;
-        text-align: center;
-        line-height: 40px;
-        font-size: 28px;
-        font-family: fibre;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        z-index: 20;
-        left:80px;
-        top: 40px;
-        border: 1px;
-        border-radius: 20px;
-        transition: color,background-color .5s;
-        cursor: default;
-    }
-    #blog-logo:hover{
-        color: #fff;
-        background-color: rgba(0,0,0,1);
-    }
-    .page-title{
+    
+    .page-title {
         font-size: 50px;
         font-family: fibre;
-        color: rgba(256,256,256,1);
+        color: rgba(256, 256, 256, 1);
         z-index: 999;
         text-align: center;
         position: absolute;
         top: 50vh;
-        left:50vw;
+        left: 50vw;
         margin-left: -201px;
         margin-top: -25px;
         animation: pulse 2s;
-        transition: display,visibility .5s;
+        transition: display, visibility .5s;
     }
-    .page-title:hover{
-        animation: pulse 2s  infinite;
+    
+    .page-title:hover {
+        animation: pulse 2s infinite;
         cursor: default;
     }
-    #homeIntroduce{
+    
+    #homeIntroduce {
         position: absolute;
-        background: rgba(0,0,0,.5);
+        background: rgba(0, 0, 0, .5);
         width: 500px;
-        left:50vw;
+        left: 50vw;
         margin-left: -250px;
         top: 50%;
         transform: translateY(-50%);
         border-radius: 10px;
     }
-    .titleComntainer{
+    
+    .titleComntainer {
         text-align: center;
     }
-    .showContent{
-        color: rgba(256,256,256,.7);
+    
+    .showContent {
+        color: rgba(256, 256, 256, .7);
         display: block;
         position: absolute;
         z-index: 100;
@@ -111,81 +115,99 @@
         font-size: 34px;
         line-height: 34px;
     }
-    .showContent:hover{
+    
+    .showContent:hover {
         -webkit-animation: jello 2s infinite;
         -o-animation: jello 2s infinite;
         animation: jello 2s infinite;
     }
-    .index-header{
+    
+    .index-header {
         margin-bottom: 60px;
         position: relative;
     }
-
 </style>
+
 <script>
     import commonArticle from "../../components/article.vue";
-    var fakeArticle =[
-        {
-            title:"test",
-            id:"test",
-            author:"shw",
-            createdTime:"26 Fri 2017",
-            extract:"前言   首页的高速加载和渲染一直是前端开发者们津津乐道的事情，因此各种技术也应运而生。在 HTTP1.1 时代，为了减少请求的发送，加快首页加载，压缩和合并成了必不可少的技术，其中包括了 JavaScript 文件的压缩、混淆和合并，还有 CSS 文件的压缩和合并，最后还有一个是针对小图片的请求优化，也就是 CSS Sprite，也叫 雪碧图 或"
-        },
-        {
-            title:"test",
-            id:"test",
-            author:"shw",
-            createdTime:"26 Fri 2017",
-            extract:"前言   首页的高速加载和渲染一直是前端开发者们津津乐道的事情，因此各种技术也应运而生。在 HTTP1.1 时代，为了减少请求的发送，加快首页加载，压缩和合并成了必不可少的技术，其中包括了 JavaScript 文件的压缩、混淆和合并，还有 CSS 文件的压缩和合并，最后还有一个是针对小图片的请求优化，也就是 CSS Sprite，也叫 雪碧图 或"
-        }
-    ]
+ 
     function defaultData() {
         return {
             activeIndex: '1',
             activeIndex2: '1',
-            showIntroduce:false,
-            showContent:false,
-            articles:[]
+            showIntroduce: false,
+            showContent: false,
+            articles: [],
         }
     }
-
-    export default{
-        data(){
+    
+    export default {
+        data() {
             return defaultData({
-                articles:[]
+                articles: []
             })
         },
-        components:{
-            "common-article":commonArticle
+        components: {
+            "common-article": commonArticle
         },
-        methods:{
-            init(){
+        methods: {
+            init() {
                 this.getArticles();
             },
-            getArticles(){
-                this.articles=fakeArticle
+            getArticles() {
+                //接下来封装
+                this.$http.get('/getData').then(response => {
+                    this.articles = response.data.articles;
+                    console.log(response.data)
+                }, err => {
+                    alert('err');
+                    console.log(err);
+                })
             },
             handleSelect(key, keyPath) {
                 console.log(key, keyPath);
             },
-            goHome(){
+            showMenuFn() {
+                if(!this.showMenu){
+                    $('.common-menu-container').animate({right:"0"},500);
+                    $('.menu-button')
+                        .html('<i class="el-icon-menu"></i>')
+                        .addClass("menu-button-open");
+                    this.showMenu = !this.showMenu;
+                }
+                else{
+                    $('.common-menu-container').animate({right:"-300px"},500);
+                    $('.menu-button')
+                        .html("MENU")
+                        .removeClass("menu-button-open");
+                    this.showMenu = !this.showMenu;
+                }
+            },
+            goHome() {
                 console.log(this.articles)
             },
-            showContentClick(){
-                this.showContent=true;
+            showContentClick() {
+                this.showContent = true;
             },
             goAnchor(selector) {
                 var anchor = this.$el.querySelector(selector);
                 $('body').animate({
                     scrollTop: anchor.offsetTop
-                },500);
+                }, 500);
+            },
+            goArticleDetail(articleId) {
+                this.$router.push({
+                    name: 'articleDetail',
+                    params: {
+                        articleId: articleId
+                    }
+                })
             }
-
+    
         },
-        beforeRouteEnter(to, from, next){
+        beforeRouteEnter(to, from, next) {
             next(vm => {
-                    vm.init()
+                vm.init()
             })
         }
     }

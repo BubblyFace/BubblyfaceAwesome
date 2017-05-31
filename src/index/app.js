@@ -1,7 +1,14 @@
 const Vue = require('vue');
 const VueRouter = require('vue-router');
 const def = require('../public/javascripts/default');
+
+
+const Vuex = require('vuex');
+Vue.use(Vuex);
+
 def.setUp();
+
+
 
 const home = require('./view/home.vue')
 const articleDetail = require('./view/articalDetail.vue')
@@ -15,5 +22,5 @@ const router = new VueRouter({
 });
 
 new Vue({
-    router
+    router,
 }).$mount('#app');

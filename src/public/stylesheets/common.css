@@ -1,36 +1,38 @@
 @font-face {
     font-family: fibre;
-    src:url(../font/fibre-font.woff);
+    src: url(../font/fibre-font.woff);
 }
 
-.common-container{
+.common-container {
     width: 100%;
     position: relative;
 }
 
-.common-vertical{
+.common-vertical {
     display: table-cell;
     vertical-align: middle;
 }
-.common-title{
+
+.common-title {
     color: #fff;
-    font:  28px "fibre", Verdana, sans-serif;
+    font: 28px "fibre", Verdana, sans-serif;
 }
 
-.blur{
-    filter:blur(10px)
+.blur {
+    filter: blur(10px)
 }
 
-.common-article{
+.common-article {
     display: block;
-    width:80%;
+    width: 80%;
     max-width: 720px;
     margin: 4rem auto;
     padding-bottom: 4rem;
-    border-bottom:#EBF2F6 1px solid;
-    word-wrap:break-word;
+    border-bottom: #EBF2F6 1px solid;
+    word-wrap: break-word;
 }
-.common-article:after{
+
+.common-article:after {
     display: block;
     content: "";
     width: 7px;
@@ -44,26 +46,29 @@
     border-radius: 100%;
     box-shadow: #FFF 0 0 0 5px;
 }
-.common-article-header{
 
-}
-.common-article-title{
+.common-article-header {}
 
-}
-.common-article-excerpt>p{
+.common-article-title {}
+
+.common-article-title:hover {}
+
+.common-article-excerpt>p {
     margin: 0;
     font-size: 0.9em;
     line-height: 1.7em;
 }
-.common-article-footer{
+
+.common-article-footer {
     display: block;
-    margin:1.75em 0 0 0;
+    margin: 1.75em 0 0 0;
     font-family: "Open Sans", sans-serif;
     font-size: 1.5rem;
     line-height: 2.2rem;
     color: #9EABB3;
 }
-.common-date{
+
+.common-date {
     display: inline-block;
     margin-left: 8px;
     padding-left: 12px;
@@ -73,7 +78,68 @@
     white-space: nowrap;
 }
 
-
-@media screen and (max-width: 740px){
-
+#blog-logo {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #999;
+    text-align: center;
+    line-height: 40px;
+    font-size: 28px;
+    font-family: fibre;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 20;
+    left: 40px;
+    top: 40px;
+    border: 1px;
+    border-radius: 20px;
+    transition: color, background-color .5s;
+    cursor: default;
 }
+
+#blog-logo:hover {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.article-header {}
+
+.menu-button {
+    position: absolute;
+    float: right;
+    right: 40px;
+    top: 40px;
+    color: #fff;
+    background-color: rgba(1, 1, 1, .1); 
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+.menu-button-open{
+    right: 300px;
+    background-color:rgba(87, 57, 50,.9) !important;
+    border-radius: 4px 0 0 4px !important;
+    border-right: none !important;
+    padding-right:0 !important;
+    position: fixed !important;
+}
+
+.menu-button:hover {
+    background-color: rgba(1, 1, 1, .3)
+}
+
+.common-menu-container{
+    width: 300px;
+    position: fixed;
+    right: -300px;
+    top:0;
+    float: right;
+    opacity: .9;
+    color:#fff
+}
+.common-menu-container>.el-menu{
+    height: 100vh
+}
+
+@media screen and (max-width: 740px) {}

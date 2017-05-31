@@ -1,4 +1,5 @@
 import ElementUI from 'element-ui'
+
 function initData(data){
     //获取用户信息，挂载到session上
     console.log("this is the default data :"+ data)
@@ -82,6 +83,7 @@ module.exports.setUp = function (data) {
     require('../stylesheets/common.css');
     require('element-ui/lib/theme-default/index.css');
     require('../stylesheets/animate.css');
+    require('../stylesheets/font-awesome.min.css')
     const Vue = require('vue');
     supportVue(Vue);
 
@@ -92,8 +94,8 @@ module.exports.setUp = function (data) {
     Vue.use(Vuex);
 
     Vue.use(ElementUI)
-
-
+    const VueResource = require('vue-resource')
+    Vue.use(VueResource)
 }
 
 /**
@@ -125,3 +127,4 @@ module.exports.data = {
     humanName: null,//用户名，一般为手机号
     cardID: null
 }
+

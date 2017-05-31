@@ -22,7 +22,7 @@ module.exports = {
                 presets: ['es2015', 'stage-2']
             }
         }, {
-            test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+            test: /\.(otf|eot|svg|ttf|woff|woff2)(\?\S*)?$/,
             loader: 'file-loader',
             query: {
                 //不设置大小，存为base64
@@ -35,6 +35,16 @@ module.exports = {
                 limit: 8192,
                 name: 'public/images/[hash:7].[name].[ext]'
             }
+        }, {
+            test: /\.md$/,
+                use: [
+                    {
+                        loader: "html-loader"
+                    },
+                    {
+                        loader: "markdown-loader",
+                    }
+                ]
         }]
     },
     resolve: {
@@ -54,6 +64,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+
+        
     ]
 }
