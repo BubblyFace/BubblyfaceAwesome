@@ -1,7 +1,11 @@
 const Article = new require('../model/article');
 const fs = require('fs');
 const path = require('path');
-const md = require('markdown-it')();
+const md = require('markdown-it')({
+    html:true,
+    linkify: false,
+    typographer:true
+});
 const express = require('express');
 const router = express.Router();
 
@@ -25,12 +29,11 @@ router.get('/getArticleDetail', function (req, res, next) {
         }
         console.log(__dirname);
         let dirPath = '/Users/haoweisun/Desktop/work/BubblyFaceAwesome/src/public/md/'
-        let articleContent = fs.readFileSync(path.join(dirPath,'test.md'), 'utf8',(err, data) => {
+        let articleContent = fs.readFileSync(path.join(dirPath,article.content), 'utf8',(err, data) => {
             if (err) throw err;
             console.log(data);
         });
         console.log(md.render(articleContent));
-
         res.send({
             article: article,
             content: md.render(articleContent)

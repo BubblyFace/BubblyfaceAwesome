@@ -1,5 +1,5 @@
 import ElementUI from 'element-ui'
-
+// import commonFooter from "../../components/commonFooter.vue";
 function initData(data){
     //获取用户信息，挂载到session上
     console.log("this is the default data :"+ data)
@@ -96,6 +96,10 @@ module.exports.setUp = function (data) {
     Vue.use(ElementUI)
     const VueResource = require('vue-resource')
     Vue.use(VueResource)
+    const commonFooter =require("../../components/commonFooter.vue");
+
+
+    Vue.component('common-footer',commonFooter);
 }
 
 /**

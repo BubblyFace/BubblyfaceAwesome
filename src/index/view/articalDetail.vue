@@ -5,18 +5,17 @@
             </article-header>
             <main id="content" class="content" name="content">
                 <div class="common-article-title ">
-                    {{article.title}}
+                    <h1>{{article.title}}</h1>
                 </div>
                 <div class="common-article-container" v-html="content">
                 </div>
                 <div class="common-article-footer">
                     <time class="common-date">{{article.createdTime}}</time>
                 </div>
-                <footer>
-    
-                </footer>
             </main>
         </div>
+        <common-footer></common-footer>
+    
     </div>
 </template>
 
@@ -54,8 +53,7 @@
     }
     export default {
         data() {
-            return defaultData({
-            })
+            return defaultData({})
         },
         components: {
             "article-header": articleHeader

@@ -42,6 +42,7 @@
                     <common-article v-bind:articleData="article"></common-article>
                 </article>
             </main>
+            <common-footer></common-footer>
         </div>
     </div>
 </template>
@@ -130,7 +131,6 @@
 
 <script>
     import commonArticle from "../../components/article.vue";
- 
     function defaultData() {
         return {
             activeIndex: '1',
@@ -148,7 +148,7 @@
             })
         },
         components: {
-            "common-article": commonArticle
+            "common-article": commonArticle,
         },
         methods: {
             init() {

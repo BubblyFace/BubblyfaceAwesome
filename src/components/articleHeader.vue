@@ -1,5 +1,5 @@
 <template>
-    <header class="article-header">
+    <header class="article-header" >
         <div id="blog-logo">B</div>
         <div class="menu">
             <el-button type="primary" class="menu-button" @click="showMenuFn"><i class="menu-icon" aria-hidden="true">
