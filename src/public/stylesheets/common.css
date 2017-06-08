@@ -2,6 +2,9 @@
     font-family: fibre;
     src: url(../font/fibre-font.woff);
 }
+*,body,html{
+    box-sizing: border-box
+}
 
 .common-container {
     width: 100%;
@@ -154,13 +157,13 @@
 }
 
 .common-footer {
-    position: relative;
     margin: 8rem 0 0 0;
     padding: 1rem 15px;
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     line-height: 1.75em;
     color: #BBC7CC;
+    width: 100%;
 }
 
 .common-footer a {

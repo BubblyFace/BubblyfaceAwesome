@@ -27,31 +27,15 @@ router.get('/getArticleDetail', function (req, res, next) {
         if (err) {
             console.log(err)
         }
-        console.log(__dirname);
         let dirPath = '/Users/haoweisun/Desktop/work/BubblyFaceAwesome/src/public/md/'
         let articleContent = fs.readFileSync(path.join(dirPath,article.content), 'utf8',(err, data) => {
             if (err) throw err;
-            console.log(data);
         });
-        console.log(md.render(articleContent));
         res.send({
             article: article,
             content: md.render(articleContent)
         })
     })
 });
-
-
-// function article(cb) {
-//     Article.fetch(function(err,articles){
-//         if(err){
-//             console.log(err)
-//         }
-//         cb(articles);
-//     })
-// }
-// module.exports = {
-//     article : article
-// }
 
 module.exports = router;

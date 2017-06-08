@@ -8,11 +8,11 @@
                 <div id="blog-logo" @click="getArticles">B</div>
                 <div class="menu">
                     <el-button type="primary" class="menu-button" @click="showMenuFn"><i class="menu-icon" aria-hidden="true">
-                                </i>MENU
+                                        </i>MENU
                     </el-button>
                     <div class="common-menu-container">
                         <el-menu theme="dark">
-                            <el-menu-item index="1">Article List</el-menu-item>
+                            <el-menu-item index="1" @click="goMySelf" >Article List</el-menu-item>
                             <el-menu-item index="2">Some Photos</el-menu-item>
                             <el-menu-item index="3">About Author</el-menu-item>
                             <el-menu-item index="4">Things Said By an Erbi</el-menu-item>
@@ -41,9 +41,13 @@
                 <article class="common-article" v-for="(article, index) in articles" @click="goArticleDetail(article.id)">
                     <common-article v-bind:articleData="article"></common-article>
                 </article>
+                <div class="block">
+                    <el-pagination layout="prev, pager, next" :total="50">
+                    </el-pagination>
+                </div>
             </main>
-            <common-footer></common-footer>
         </div>
+            <common-footer></common-footer>
     </div>
 </template>
 
@@ -55,7 +59,7 @@
     #bgIndex {
         min-width: 1200px;
         width: 100%;
-        height:100vh;
+        height: 100vh;
         overflow-y: hidden;
         background-color: #fff;
         position: relative;
@@ -131,6 +135,7 @@
 
 <script>
     import commonArticle from "../../components/article.vue";
+    
     function defaultData() {
         return {
             activeIndex: '1',
@@ -168,15 +173,18 @@
                 console.log(key, keyPath);
             },
             showMenuFn() {
-                if(!this.showMenu){
-                    $('.common-menu-container').animate({right:"0"},500);
+                if (!this.showMenu) {
+                    $('.common-menu-container').animate({
+                        right: "0"
+                    }, 500);
                     $('.menu-button')
                         .html('<i class="el-icon-menu"></i>')
                         .addClass("menu-button-open");
                     this.showMenu = !this.showMenu;
-                }
-                else{
-                    $('.common-menu-container').animate({right:"-300px"},500);
+                } else {
+                    $('.common-menu-container').animate({
+                        right: "-300px"
+                    }, 500);
                     $('.menu-button')
                         .html("MENU")
                         .removeClass("menu-button-open");
@@ -185,6 +193,14 @@
             },
             goHome() {
                 console.log(this.articles)
+            },
+            goMySelf(){
+                this.$router.push({
+                    name: 'myself',
+                    params: {
+                        test:"toMySelf"
+                    }
+                })
             },
             showContentClick() {
                 this.showContent = true;

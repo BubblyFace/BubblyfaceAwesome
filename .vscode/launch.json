@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "/Users/haoweisun/Desktop/work/BubblyFaceAwesome/test.js"
+            "program": "/Users/haoweisun/Desktop/work/BubblyFaceAwesome/bubblyfaceAwesome.js"
         }
     ]
 }

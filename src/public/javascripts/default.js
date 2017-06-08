@@ -84,6 +84,13 @@ module.exports.setUp = function (data) {
     require('element-ui/lib/theme-default/index.css');
     require('../stylesheets/animate.css');
     require('../stylesheets/font-awesome.min.css')
+    
+    //图片上传依赖
+    require('../bootstrap-fileinput/css/fileinput.min.css');
+    require('../bootstrap-fileinput/js/plugins/piexif.min.js');
+    require('../bootstrap-fileinput/js/plugins/sortable.min.js');
+    require('../bootstrap-fileinput/js/plugins/purify.min.js');
+    require('../bootstrap-fileinput/js/fileinput.min.js');
     const Vue = require('vue');
     supportVue(Vue);
 
@@ -96,9 +103,7 @@ module.exports.setUp = function (data) {
     Vue.use(ElementUI)
     const VueResource = require('vue-resource')
     Vue.use(VueResource)
-    const commonFooter =require("../../components/commonFooter.vue");
-
-
+    const commonFooter = require("../../components/commonFooter.vue");
     Vue.component('common-footer',commonFooter);
 }
 
