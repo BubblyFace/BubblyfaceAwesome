@@ -2,6 +2,14 @@
     <div>
         <div class="common-article">
             <article-header>
+                <div slot="munuItems">
+                    <el-menu theme="dark">
+                        <el-menu-item index="1">作者介绍</el-menu-item>
+                        <el-menu-item index="2">作者吐槽</el-menu-item>
+                        <el-menu-item index="3">作者瞎想</el-menu-item>
+                        <el-menu-item index="4">作者本人后台页</el-menu-item>
+                    </el-menu>
+                </div>
             </article-header>
             <main>
                 <input id="input-image" type="file" name="image" class="file" data-preview-file-type="text" multiple>
@@ -43,7 +51,7 @@
                     showUploadedThumbs: false,
                     browseOnZoneClick: true,
                     maxFileSize: 10000,
-                    maxFileCount:12,
+                    maxFileCount: 12,
                     uploadAsync: false,
                     uploadExtraData: {
                         id: `test`,

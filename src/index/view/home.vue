@@ -13,7 +13,7 @@
                     <div class="common-menu-container">
                         <el-menu theme="dark">
                             <el-menu-item index="1" @click="goMySelf" >Article List</el-menu-item>
-                            <el-menu-item index="2">Some Photos</el-menu-item>
+                            <el-menu-item index="2" @click="goAblum">Some Photos</el-menu-item>
                             <el-menu-item index="3">About Author</el-menu-item>
                             <el-menu-item index="4">Things Said By an Erbi</el-menu-item>
                         </el-menu>
@@ -199,6 +199,14 @@
                     name: 'myself',
                     params: {
                         test:"toMySelf"
+                    }
+                })
+            },
+            goAblum(){
+                this.$router.push({
+                    name: 'ablums',
+                    params: {
+                        test:"ablums"
                     }
                 })
             },

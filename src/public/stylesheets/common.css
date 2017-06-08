@@ -144,7 +144,7 @@
     z-index: 1000;
 }
 
-.common-menu-container>.el-menu {
+.common-menu-container .el-menu {
     height: 100vh
 }
 
