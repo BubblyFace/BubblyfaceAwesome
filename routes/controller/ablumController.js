@@ -1,4 +1,7 @@
-var multer = require('multer')
+var multer = require('multer');
+const Ablum = new require('../../model/ablum');
+const fs = require('fs');
+const path = require('path');
 
 //存储配置
 var storage = multer.diskStorage({
@@ -9,7 +12,7 @@ var storage = multer.diskStorage({
     //给上传文件重命名，获取添加后缀名
     filename: function (req, file, cb) {
         var fileFormat = (file.originalname).split(".");
-        cb(null, file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1]);
+        cb(null, fileFormat.length + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1]);
     }
 });
 //文件上传路径
@@ -18,6 +21,9 @@ var upload = multer({
     storage: storage
 }).array("image",12);
 //multer有single()中的名称必须是表单上传字段的name名称。
+
+
+
 exports.dataInput = function (req, res) {
     upload(req, res, function (err) {
         //添加错误处理

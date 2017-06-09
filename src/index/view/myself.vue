@@ -7,12 +7,14 @@
                         <el-menu-item index="1">作者介绍</el-menu-item>
                         <el-menu-item index="2">作者吐槽</el-menu-item>
                         <el-menu-item index="3">作者瞎想</el-menu-item>
-                        <el-menu-item index="4">作者本人后台页</el-menu-item>
+                        <el-menu-item index="4" @click="articleAdd">作者本人后台页</el-menu-item>
                     </el-menu>
                 </div>
             </article-header>
             <main>
                 <input id="input-image" type="file" name="image" class="file" data-preview-file-type="text" multiple>
+                </input>
+                <input id="article-image" type="file" name="article" class="file" data-preview-file-type="text">
                 </input>
             </main>
         </div>
@@ -42,6 +44,9 @@
                 this.showInput();
     
             },
+            articleAdd(){
+                
+            },
             showInput() {
                 // with plugin options 
                 $("#input-image").fileinput({
@@ -56,8 +61,22 @@
                     uploadExtraData: {
                         id: `test`,
                     }
-                }).on;
-    
+                });
+                $("#article-image").fileinput({
+                    uploadUrl: "/postData/articleUpload",
+                    allowedFileExtensions: ["md"],
+                    language: "zh",
+                    showUploadedThumbs: false,
+                    browseOnZoneClick: true,
+                    maxFileSize: 10000,
+                    maxFileCount: 12,
+                    uploadAsync: false,
+                    uploadExtraData: {
+                        author: 'shw',
+                        title: 'test',
+                        extract: '这是一段测试数据'
+                    }
+                });
             }
         },
         beforeRouteEnter(to, from, next) {

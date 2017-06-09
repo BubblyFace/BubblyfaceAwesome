@@ -38,7 +38,7 @@
                 </a>
             </header>
             <main id="content" class="content" name="content">
-                <article class="common-article" v-for="(article, index) in articles" @click="goArticleDetail(article.id)">
+                <article class="common-article" v-for="(article, index) in articles" @click="goArticleDetail(article._id)">
                     <common-article v-bind:articleData="article"></common-article>
                 </article>
                 <div class="block">
