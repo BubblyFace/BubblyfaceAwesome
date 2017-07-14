@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双飞翼布局</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-inner">
+            <p>
+                双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局双飞翼布局
+            </p>
+        </div>
+    </div>
+    <div class="left">
+    </div>
+    <div class="right">
+    </div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            float: left
+        }
+
+        .main-inner {
+            background: red;
+            height: 200px;
+            margin: 0 200px;
+            overflow-y: scroll
+        }
+
+        .left {
+            width: 200px;
+            height: 200px;
+            background: black;
+            /*将left层拉回main层所在高度区域*/
+            margin-left: -100%;
+            float: left
+        }
+
+        .right {
+            width: 200px;
+            height: 200px;
+            background: gray;
+            margin-left: -200px;
+            float: left
+        }
+    </style>
+</body>
+
+</html>

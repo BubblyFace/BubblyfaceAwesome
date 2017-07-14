@@ -25,9 +25,6 @@
 
 <script>
     import articleHeader from "../../components/articleHeader.vue";
-    // import test from "../../public/md/test.md"
-    // var md = window.markdownit();
-    // var result = md.render('# markdown-it rulezz!');
     function defaultData() {
         return {
             activeIndex: '1',
@@ -74,7 +71,6 @@
                     },
                 }).then(response => {
                     this.article = response.data.article;
-                    //this.content = this.getMarkdownFile(this.article.content) 
                     this.content = response.data.content;
                 })
             },

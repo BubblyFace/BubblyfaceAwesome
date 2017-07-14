@@ -5,14 +5,14 @@
                 <div id="bgIndex" :class="{ blur: showIntroduce }">
                     <img src="../../public/images/bg_2.jpg">
                 </div>
-                <div id="blog-logo" @click="getArticles">B</div>
+                <div id="blog-logo" @click="goHome">B</div>
                 <div class="menu">
                     <el-button type="primary" class="menu-button" @click="showMenuFn"><i class="menu-icon" aria-hidden="true">
-                                        </i>MENU
+                                                    </i>MENU
                     </el-button>
                     <div class="common-menu-container">
                         <el-menu theme="dark">
-                            <el-menu-item index="1" @click="goMySelf" >Article List</el-menu-item>
+                            <el-menu-item index="1" @click="goMySelf">Article List</el-menu-item>
                             <el-menu-item index="2" @click="goAblum">Some Photos</el-menu-item>
                             <el-menu-item index="3">About Author</el-menu-item>
                             <el-menu-item index="4">Things Said By an Erbi</el-menu-item>
@@ -29,7 +29,7 @@
                         <el-col :span="24">
                             <div class="titleComntainer" @click="showIntroduce=!showIntroduce">
                                 <h1 class="common-title">Welcome</h1>
-                            </div>
+                            </div>·
                         </el-col>
                     </el-row>
                 </div>
@@ -47,7 +47,7 @@
                 </div>
             </main>
         </div>
-            <common-footer></common-footer>
+        <common-footer></common-footer>
     </div>
 </template>
 
@@ -192,21 +192,25 @@
                 }
             },
             goHome() {
-                console.log(this.articles)
+                console.log(this.$store)
             },
-            goMySelf(){
-                this.$router.push({
-                    name: 'myself',
-                    params: {
-                        test:"toMySelf"
+            goMySelf() {
+                this.$router.push(
+                    {
+                        name: 'myself',
+                        params: {
+                            id: 'shw',
+                            Item: 'test',
+                        }
                     }
-                })
+                )
+    
             },
-            goAblum(){
+            goAblum() {
                 this.$router.push({
                     name: 'ablums',
                     params: {
-                        test:"ablums"
+                        ablumItem: "ablumIndex"
                     }
                 })
             },

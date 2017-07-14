@@ -22,7 +22,6 @@ module.exports = function (app) {
     app.use(bodyParser.urlencoded({
         extended: true
     })); // for parsing application/x-www-form-urlencoded
-    //app.use(multer()); // for parsing multipart/form-data
     app.use('/postData', require('./postData'))
     app.use(function (err, req, res, next) {
         console.error(err.stack);

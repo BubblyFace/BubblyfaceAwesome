@@ -49,6 +49,9 @@
     border-radius: 100%;
     box-shadow: #FFF 0 0 0 5px;
 }
+.common-form{
+    margin-top: 120px
+}
 
 .common-article-header {}
 

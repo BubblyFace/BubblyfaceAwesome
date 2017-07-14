@@ -37,13 +37,14 @@ function dataInput(req, res) {
         //存储信息
         var articleData = req.body
         articleData['path'] = req.file.path;
+        articleData['title'] = req.file.originalname.replace('.md','');
         var article = new Article(articleData);
         article.save(function(err,art){
             console.log("success saved"+art)
         })
         console.log(articleData)
-        console.log(req.body);
-        console.log(req.file);
+        //console.log(req.body);
+        //console.log(req.file);
         res.json({
             meg:"success"
         })

@@ -18,8 +18,10 @@ router.get('/getArticleDetail', articleController.getArticleDetail);
 router.get('/removeArticle', articleController.removeArticle);
 
 //图片数据处理
-// router.get('/getAllPhoho', ablumController.getAllAblum);
-// router.get('/getAblumDetail', ablumController.getAblumDetail);
+//相册创建
+//router.get('/createAblum',ablumController.createAblum)
+router.get('/getAllPhoho', ablumController.getAllAblum);
+router.get('/getAblumDetail', ablumController.getAblumDetail);
 // router.get('/removeAblum', ablumController.removeAblum);
 
 module.exports = router;

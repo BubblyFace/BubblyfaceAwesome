@@ -30,11 +30,12 @@
     import articleHeader from "../../components/articleHeader.vue";
     
     function defaultData() {
-        return {}
+        return {
+        }
     }
     export default {
         data() {
-            return defaultData({})
+            return defaultData()
         },
         components: {
             "article-header": articleHeader
@@ -42,10 +43,13 @@
         methods: {
             init() {
                 this.showInput();
-    
+                console.log(this.$route.params)
             },
             articleAdd(){
                 
+            },
+            titleChange(){
+                console.dir(this.title)
             },
             showInput() {
                 // with plugin options 
@@ -72,9 +76,8 @@
                     maxFileCount: 12,
                     uploadAsync: false,
                     uploadExtraData: {
-                        author: 'shw',
-                        title: 'test',
-                        extract: '这是一段测试数据'
+                        author: 'BubblyFace',
+                        title: this.title,
                     }
                 });
             }
